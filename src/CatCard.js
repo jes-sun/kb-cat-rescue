@@ -16,9 +16,12 @@ function CatCard(props) {
                 <Card.Img src={props.cat.image} alt={props.cat.name} className="catimage"/>
             </ResponsiveEmbed>
             <Card.Header className="text-center">
-                <h4>{props.cat.name} <small>{conditionBadge}</small></h4>
+            <span className="d-flex justify-content-center align-items-center">
+                <h4 className="my-auto mr-1">{props.cat.name}</h4>
+                <small>{conditionBadge}</small>
+            </span>
                  
-                {props.cat.sex} {props.cat.info.name} <br/>
+                {props.cat.sex} {props.cat.info.name}<br/>
                 {ageMessage}               
             </Card.Header>
             <Card.Body className="d-flex justify-content-center">
