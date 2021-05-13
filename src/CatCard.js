@@ -2,6 +2,9 @@ import Card from "react-bootstrap/Card";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 function CatCard(props) {
     
@@ -20,20 +23,24 @@ function CatCard(props) {
                 />
             </ResponsiveEmbed>
             <Card.Header className="text-center">
-            <span className="d-flex justify-content-center align-items-center">
-                <h4 className="my-auto mr-1">{props.cat.name}</h4>
-                <small>{conditionBadge}</small>
-            </span>
-                 
-                {props.cat.sex} {props.cat.info.name}<br/>
-                {ageMessage}               
-            </Card.Header>
-            <Card.Body className="d-flex justify-content-center">
-                <Button variant="primary">
-                    Meet {props.cat.name}
-                </Button>       
-            </Card.Body>
-            
+                <Container>
+                    <Row>
+                        <Col>
+                            <span className="d-flex justify-content-center align-items-center">
+                                <h4 className="my-auto mr-1">{props.cat.name}</h4>
+                                <small>{conditionBadge}</small>
+                            </span>                 
+                            {props.cat.sex} {props.cat.info.name}<br/>
+                            {ageMessage}  
+                        </Col>
+                        <Col className="d-flex justify-content-center align-items-center">
+                            <Button variant="primary">
+                                Meet {props.cat.name}
+                            </Button> 
+                        </Col>
+                    </Row>         
+                </Container>   
+            </Card.Header>            
         </Card>
             
     )
