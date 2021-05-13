@@ -8,7 +8,7 @@ Here are my learning goals for this project.
 - Get a better understanding of `react-bootstrap`
 - Get a better understanding of `async`/`await`
 
-# Sources
+## Sources
 Cat names list from:
 - [sindresorhus/cat-names](https://github.com/sindresorhus/cat-names)
 - [fregante/pet-names](https://github.com/fregante/pet-names)
