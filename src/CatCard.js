@@ -13,7 +13,11 @@ function CatCard(props) {
     return(
         <Card>
             <ResponsiveEmbed aspectRatio="1by1">
-                <Card.Img src={props.cat.image} alt={props.cat.name} className="catimage"/>
+                <Card.Img 
+                    src={props.cat.image} 
+                    alt={props.cat.name} 
+                    className="catimage"    
+                />
             </ResponsiveEmbed>
             <Card.Header className="text-center">
             <span className="d-flex justify-content-center align-items-center">
