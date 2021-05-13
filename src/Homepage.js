@@ -1,4 +1,5 @@
-import './css/App.css';
+import "./css/App.css";
+import CatCard from "./CatCard.js";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -12,6 +13,17 @@ function Homepage() {
                     <h1>
                         Kilobyte Cat Rescue
                     </h1>
+                    <h4>
+                        Adopt a new digital friend today!
+                    </h4>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                hello
+                </Col>
+                <Col xs={12} md={4}>
+                    <CatCard/>
                 </Col>
             </Row>
         </Container>

@@ -30,11 +30,11 @@ const server = app.listen(port, host, function () {
     console.log("kbcr API listening at http://%s:%s", host,  port);
  })
 
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', '*');
-//     next();
-// });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    next();
+});
 
 app.use(express.json());
 
@@ -122,7 +122,7 @@ async function generateCat() {
     const randomlySelectedName = catNamesList[getRandomInt(catNamesList.length)]
     
     const randomlySelectedBirthYear = new Date().getFullYear() - (1 + getRandomInt(15))
-    const randomlySelectedSex = getRandomInt(2) ? "male" : "female"
+    const randomlySelectedSex = getRandomInt(2) ? "Male" : "Female"
     const condition = getCondition() 
     
     const cat = {

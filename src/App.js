@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Homepage from "./Homepage";
 import MyNavbar from "./MyNavbar";
+import Homepage from "./Homepage";
+import Adopt from "./Adopt";
 
 function App() {
     return (
@@ -10,6 +11,9 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Homepage}/>
+                <Route exact path="/cats"/>
+                <Route exact path="/cats/:catName"/>
+                <Route exact path="/adopt" component={Adopt}/>
             </Switch>
         </BrowserRouter>
         </>
