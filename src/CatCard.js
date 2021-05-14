@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import Card from "react-bootstrap/Card";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import Button from "react-bootstrap/Button";
@@ -13,6 +15,12 @@ function CatCard(props) {
 
     const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary">{props.cat.condition}</Badge>) : (<></>)
     
+    let history = useHistory()
+    function meetCat() {
+        history.push(
+            "/cats/"+encodeURI(props.cat.name),
+            { cat: props.cat }) 
+    }
     return(
         <Card>
             <ResponsiveEmbed aspectRatio="1by1">
@@ -29,12 +37,16 @@ function CatCard(props) {
                             <span className="d-flex justify-content-center align-items-center">
                                 <h4 className="my-auto mr-1">{props.cat.name}</h4>
                                 <small>{conditionBadge}</small>
-                            </span>                 
+                            </span> 
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>                                            
                             {props.cat.sex} {props.cat.info.name}<br/>
                             {ageMessage}  
                         </Col>
                         <Col className="d-flex justify-content-center align-items-center">
-                            <Button variant="primary">
+                            <Button variant="primary" onClick={meetCat}>
                                 Meet {props.cat.name}
                             </Button> 
                         </Col>

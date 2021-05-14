@@ -1,11 +1,13 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
+import logo from "./images/logo.png";
+
 function MyNavbar() {
     return (
-        <Navbar collapseOnSelect expand="sm" className="justify-content-around">
+        <Navbar collapseOnSelect className="justify-content-around">
             <Navbar.Brand href="/">
-                kB Cat Rescue
+                <img src={logo} alt="Kilobyte Cat Rescue" height="50em"/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -14,12 +16,12 @@ function MyNavbar() {
                         Adopt
                     </Nav.Link>
                     <Nav.Link>
-                        About Us
+                        My Account
                     </Nav.Link>
                 </Nav>
                 <Nav>
                     <Nav.Link>
-                        My Account
+                        About
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
