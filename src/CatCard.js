@@ -19,12 +19,12 @@ function CatCard(props) {
     const age = new Date().getFullYear() - props.cat.birthYear
     const ageMessage = age !== 1 ? age + " years old" : age + " year old"
 
-    const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary">{props.cat.condition}</Badge>) : (<></>)
+    const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary" className="ml-1">{props.cat.condition}</Badge>) : (<></>)
     
     
     return(
         <>
-        <Card>
+        <Card className="h-100">
             <ResponsiveEmbed aspectRatio="1by1">
                 <Card.Img 
                     src={props.cat.image} 
@@ -33,17 +33,20 @@ function CatCard(props) {
                 />
             </ResponsiveEmbed>
             <Card.Header className="text-center">
-                <Container>
+                <span className="d-flex justify-content-center align-items-center">
+                    <h4 className="my-1">{props.cat.name}</h4>
+                    <small>{conditionBadge}</small>
+                </span> 
+            </Card.Header>
+            <Card.Body className="text-center">
+                <Container className="h-100 d-flex flex-column">
                     <Row>
                         <Col>
-                            <span className="d-flex justify-content-center align-items-center">
-                                <h4 className="my-auto mr-1">{props.cat.name}</h4>
-                                <small>{conditionBadge}</small>
-                            </span> 
+                            
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>                                            
+                    <Row className="my-auto">
+                        <Col >                                            
                             {props.cat.sex} {props.cat.info.name}<br/>
                             {ageMessage}  
                         </Col>
@@ -54,7 +57,7 @@ function CatCard(props) {
                         </Col>
                     </Row>         
                 </Container>   
-            </Card.Header>            
+            </Card.Body>            
         </Card>
         <Modal 
             show={meetCat} 

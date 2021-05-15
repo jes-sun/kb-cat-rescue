@@ -32,9 +32,9 @@ function CatPage(props) {
 
     return( 
         <Container>
-            <Modal.Header style={{border:"1px solid red"}} closeButton>
+            <Modal.Header closeButton>
                 <Row className="ml-auto">
-                    <Col>
+                    <Col className="d-flex flex-column align-items-center">
                         <span className="d-flex align-items-center">
                             <h1 className="my-auto mr-1">{cat.name}</h1>
                             {conditionBadge}
