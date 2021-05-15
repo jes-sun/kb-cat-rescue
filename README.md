@@ -4,7 +4,6 @@ Welcome to the Kilobyte Cat Rescue! This is a unique shelter — all of the cats
 ## Goals
 Here are my learning goals for this project.
 - Learn about React Hooks
-- Learn about unit testing
 - Get a better understanding of `react-bootstrap`
 - Get a better understanding of `async`/`await`
 
