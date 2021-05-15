@@ -1,4 +1,4 @@
-# The Kilobyte Cat Rescue
+# The Kilobyte Cat Rescue [In Progress]
 Welcome to the Kilobyte Cat Rescue! This is a unique shelter — all of the cats are randomly generated! Despite their digital existence, these cats are still adorable and looking for new homes... perhaps you might have a place for one in your code? Take a look, you might just meet a new fictional friend!
 
 ## Preview
