@@ -2,8 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import MyNavbar from "./MyNavbar";
 import Homepage from "./Homepage";
-import Adopt from "./Adopt";
-import CatPage from "./CatPage";
+import AdoptList from "./AdoptList";
 
 function App() {
     return (
@@ -12,9 +11,8 @@ function App() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Homepage}/>
-                <Route exact path="/cats"/>
-                <Route exact path ="/cats/:catName" component={CatPage}/>
-                <Route exact path="/adopt" component={Adopt}/>
+                <Route exact path="/cats" component={AdoptList}/>
+                <Route exact path="/adopt"/>
             </Switch>
         </BrowserRouter>
         </>

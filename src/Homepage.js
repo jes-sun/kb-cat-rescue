@@ -42,7 +42,7 @@ function Homepage() {
                     </p>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                            <Button variant="primary">
+                            <Button variant="primary" href="/cats">
                                 See cats
                             </Button>
                         </Col>

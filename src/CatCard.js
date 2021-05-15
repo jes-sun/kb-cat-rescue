@@ -1,5 +1,6 @@
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
+import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import ResponsiveEmbed from "react-bootstrap/ResponsiveEmbed";
 import Button from "react-bootstrap/Button";
@@ -8,20 +9,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import CatPage from "./CatPage.js";
+
 function CatCard(props) {
+    const [meetCat, setMeetCat] = useState(false);
+    const handleClose = () => setMeetCat(false);
+    const handleShow = () => setMeetCat(true);
     
     const age = new Date().getFullYear() - props.cat.birthYear
     const ageMessage = age !== 1 ? age + " years old" : age + " year old"
 
     const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary">{props.cat.condition}</Badge>) : (<></>)
     
-    let history = useHistory()
-    function meetCat() {
-        history.push(
-            "/cats/"+encodeURI(props.cat.name),
-            { cat: props.cat }) 
-    }
+    
     return(
+        <>
         <Card>
             <ResponsiveEmbed aspectRatio="1by1">
                 <Card.Img 
@@ -46,7 +48,7 @@ function CatCard(props) {
                             {ageMessage}  
                         </Col>
                         <Col className="d-flex justify-content-center align-items-center">
-                            <Button variant="primary" onClick={meetCat}>
+                            <Button variant="primary" onClick={handleShow}>
                                 Meet {props.cat.name}
                             </Button> 
                         </Col>
@@ -54,6 +56,14 @@ function CatCard(props) {
                 </Container>   
             </Card.Header>            
         </Card>
+        <Modal 
+            show={meetCat} 
+            onHide={handleClose}
+            size="lg"
+        >
+            <CatPage cat={props.cat}/>
+        </Modal>
+        </>
             
     )
 }

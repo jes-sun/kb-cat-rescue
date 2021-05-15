@@ -1,14 +1,13 @@
-import { useHistory } from "react-router-dom";
-
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import Modal from "react-bootstrap/Modal";
 
 function CatPage(props) {
-    const cat = props.location.state.cat
+    const cat = props.cat
 
     const age = new Date().getFullYear() - cat.birthYear
     const ageMessage = age !== 1 ? age + " years old" : age + " year old"
@@ -31,30 +30,28 @@ function CatPage(props) {
         )
     }
 
-    let history = useHistory()
-    function backButton() {
-        history.goBack()
-    }
-
     return( 
         <Container>
+            <Modal.Header style={{border:"1px solid red"}} closeButton>
+                <Row className="ml-auto">
+                    <Col>
+                        <span className="d-flex align-items-center">
+                            <h1 className="my-auto mr-1">{cat.name}</h1>
+                            {conditionBadge}
+                        </span>   
+                        <h6>{cat.sex} {cat.info.name}, {ageMessage}</h6>                       
+                    </Col>
+                </Row>
+                
+            </Modal.Header>
             <Row>
-                <Col xs={12} md={6}>
+                <Col xs={12} lg={6} className="d-flex align-items-center">
                     <img src={cat.image} alt={cat.name} width="100%"/>
                 </Col>
                 <Col>
+                    
                     <Row>
-                        <Col>
-                            <span className="d-flex justify-content-center align-items-center">
-                                <h1 className="my-auto mr-1">{cat.name}</h1>
-                                {conditionBadge}
-                            </span>                            
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className="text-center">
-                            <h6>{cat.sex} {cat.info.name}, {ageMessage}</h6>
-                        </Col>
+                        
                     </Row>
                     <Row>
                         <Col className="text-center mb-2">
@@ -85,16 +82,11 @@ function CatPage(props) {
                     <TraitBar name="Grooming" trait={cat.info.grooming}/>
                 </Col>
             </Row>
-            <Row>
-                <Col className="my-3 d-flex justify-content-end">
-                    <Button className="mx-1" variant="secondary" onClick={backButton}>
-                        Back
-                    </Button>
-                    <Button className="mx-1" variant="success">
+            <Modal.Footer>
+                <Button className="mx-1" variant="success">
                         Adopt {cat.name} 
                     </Button> 
-                </Col>
-            </Row>
+            </Modal.Footer>
         </Container>
     )
 }
