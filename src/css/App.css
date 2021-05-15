@@ -9,9 +9,70 @@
 }
 
 .navbar {
-    background-color: #EDF7B5;
+    background-color: #219EBC;
+    box-shadow: 0 0 5px #176E83;
+}
+.navbar-brand {
+    padding: 0
 }
 
 body {
-    background-color: #EDF7D2;
+    background-color: #8ECAE6;
+}
+
+.btn-primary {
+    background-color: #023047;
+    border-color: #012131;
+    box-shadow: 0 0 5px #012131;
+}
+.btn-outline-primary {
+    border-color: #012131;
+    color: #012131;
+    box-shadow: 0 0 5px #012131;
+}
+.btn-primary:hover, .btn-primary:active, .btn-outline-primary:hover, .btn-outline-primary:active {
+    background-color: #012131 !important;
+    border-color: #012131 !important;
+    box-shadow: 0 0 5px #012131 !important;
+}
+
+.btn-success {
+    background-color: #FB8500;
+    border-color: #E17700;
+    box-shadow: 0 0 5px #E17700;
+}
+.btn-success:hover, .btn-success:active {
+    background-color: #E17700 !important;
+    border-color: #E17700 !important;
+    box-shadow: 0 0 5px #E17700 !important;
+}
+
+.progress {
+    background-color: #A6D8E4;
+    
+}
+.progress-bar {
+    background-color: #219EBC;
+}
+
+.card {
+    background-color: #71A1B8;
+    border: 1px solid #71A1B8;
+}
+.card-header {
+    background-color: #71A1B8;
+}
+
+.card-body, .modal-content {
+    background-color: #7FB5CF;
+}
+.modal-header {
+    border-bottom: 1px solid #71A1B8;
+}
+.modal-footer {
+    border-top: 1px solid #71A1B8;
+}
+
+.badge-secondary {
+    background-color: #FB8500;
 }

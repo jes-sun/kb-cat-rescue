@@ -32,7 +32,7 @@ function CatPage(props) {
 
     return( 
         <Container>
-            <Modal.Header closeButton>
+            <Modal.Header className="mb-1" closeButton>
                 <Row className="ml-auto">
                     <Col className="d-flex flex-column align-items-center">
                         <span className="d-flex align-items-center">
@@ -46,7 +46,7 @@ function CatPage(props) {
             </Modal.Header>
             <Row>
                 <Col xs={12} lg={6} className="d-flex align-items-center">
-                    <img src={cat.image} alt={cat.name} width="100%"/>
+                    <img src={cat.image} alt={cat.name} width="100%" style={{borderRadius:"5px"}}/>
                 </Col>
                 <Col>
                     
@@ -61,6 +61,7 @@ function CatPage(props) {
                     <Row>                        
                         <Col>
                             <p>{cat.info.description}</p>
+                            <p>Adopt {cat.name} today!</p>
                         </Col>
                     </Row>
                 </Col>

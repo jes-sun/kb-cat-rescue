@@ -5,22 +5,22 @@ import logo from "./images/logo.png";
 
 function MyNavbar() {
     return (
-        <Navbar expand="sm" collapseOnSelect className="justify-content-around">
+        <Navbar sticky="top" expand="sm" collapseOnSelect className="justify-content-around">
             <Navbar.Brand href="/">
                 <img src={logo} alt="Kilobyte Cat Rescue" height="50em"/>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="/cats">
+                    <Nav.Link className="mx-4" href="/cats">
                         Adopt
                     </Nav.Link>
-                    <Nav.Link>
+                    <Nav.Link className="mx-4">
                         My Account
                     </Nav.Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link>
+                    <Nav.Link className="mx-4">
                         About
                     </Nav.Link>
                 </Nav>

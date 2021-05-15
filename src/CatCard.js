@@ -19,7 +19,7 @@ function CatCard(props) {
     const age = new Date().getFullYear() - props.cat.birthYear
     const ageMessage = age !== 1 ? age + " years old" : age + " year old"
 
-    const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary" className="ml-1">{props.cat.condition}</Badge>) : (<></>)
+    const conditionBadge = props.cat.condition !== "none" ? (<Badge variant="secondary" className="ml-2">{props.cat.condition}</Badge>) : (<></>)
     
     
     return(
@@ -35,7 +35,7 @@ function CatCard(props) {
             <Card.Header className="text-center">
                 <span className="d-flex justify-content-center align-items-center">
                     <h4 className="my-1">{props.cat.name}</h4>
-                    <small>{conditionBadge}</small>
+                    {conditionBadge}
                 </span> 
             </Card.Header>
             <Card.Body className="text-center">

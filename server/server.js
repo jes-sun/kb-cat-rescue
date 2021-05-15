@@ -106,7 +106,7 @@ function getCondition() {
     ]
     let condition = "none"
     // Roll for chance of rarer condition
-    if (getRandomInt(conditionsList.length*2) < conditionsList.length) {
+    if (getRandomInt(conditionsList.length*3) < conditionsList.length) {
         // Roll for condition
         condition = conditionsList[getRandomInt(conditionsList.length)]
     }
