@@ -37,6 +37,16 @@ function AdoptList(props) {
     return(
         <Container>
             <Row>
+                <Col className="text-center">
+                    <h1>Up for adoption!</h1>
+                    <p>
+                        These cats have been generated just now. <br/>
+                        If you leave the page, they will be gone forever! <br/>
+                        To see more cats, click the button at the bottom of the page.
+                    </p>
+                </Col>
+            </Row>
+            <Row>
                 <Col>
                     <Row>
                         <CatCardsList/>

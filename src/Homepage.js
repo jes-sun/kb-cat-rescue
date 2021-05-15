@@ -21,7 +21,7 @@ function Homepage() {
     return(
         <Container>
             <Row>
-                <Col className="mt-3 text-center">
+                <Col className="text-center">
                     <img src={logo} alt="Kilobyte Cat Rescue" height="100em"/>                                       
                     <h1>
                         Kilobyte Cat Rescue

@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom";
+
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import Container from "react-bootstrap/Container";
@@ -14,6 +16,11 @@ function CatPage(props) {
 
     const conditionBadge = cat.condition !== "none" ? (<Badge variant="secondary">{cat.condition}</Badge>) : (<></>)
     
+    let history = useHistory()
+    function adopt() {
+        history.push("/adopt", {cat:cat})
+    }
+
     function percent(trait) {
         return 100*(trait/5)
     }
@@ -49,10 +56,6 @@ function CatPage(props) {
                     <img src={cat.image} alt={cat.name} width="100%" style={{borderRadius:"5px"}}/>
                 </Col>
                 <Col>
-                    
-                    <Row>
-                        
-                    </Row>
                     <Row>
                         <Col className="text-center mb-2">
                             <em>{cat.info.temperament}</em>
@@ -84,7 +87,7 @@ function CatPage(props) {
                 </Col>
             </Row>
             <Modal.Footer>
-                <Button className="mx-1" variant="success">
+                <Button className="mx-1" variant="success" onClick={adopt}>
                         Adopt {cat.name} 
                     </Button> 
             </Modal.Footer>
