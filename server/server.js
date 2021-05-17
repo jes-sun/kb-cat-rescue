@@ -3,6 +3,9 @@ const app = express();
 const axios = require('axios');
 const { MongoClient } = require("mongodb");
 const path = require("path");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const port = process.env.PORT || 8080;
 const host = "0.0.0.0";
 
@@ -15,9 +18,9 @@ const url = process.env.DB_URL;
 const client = new MongoClient(url);
 let database;
 
-const buildPath = path.join(__dirname, '../build');
-app.use(express.static(buildPath));
-console.log("Express serving", buildPath);
+// const buildPath = path.join(__dirname, '../build');
+// app.use(express.static(buildPath));
+// console.log("Express serving", buildPath);
 
 const server = app.listen(port, host, function () {
     const port = server.address().port
@@ -142,5 +145,71 @@ app.get("/api/generatecat", (req, res) => {
         {
             res.send(cat)
         })
-    .catch(err => res.send(err))
+    .catch(err => {
+        console.error(err)
+        res.send(false)
+    })
+})
+
+app.post("/api/login", (req, res) => {
+    console.log("Attempted login",req.body.username, req.body.password);
+    const username = req.body.username
+    try {
+        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (err, user) => {
+            if (err) throw err;
+            if (user) {
+                console.log("User", username, "found")
+                bcrypt.compare(req.body.password, user.password, (err, passCheck) => {
+                    if (err) throw err;
+                    passCheck ? console.log("Password correct") : console.log("Password incorrect")
+                    res.send(passCheck)
+                })
+            } else {
+                console.log("User", username, "not found")
+                res.send(false)
+            }
+        })
+    } catch (err) {
+        console.error(err)
+    }
+})
+
+app.post("/api/checkUsername", (req, res) => {
+    try {
+        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (user) => {
+            user ? res.send(true) : res.send(false)
+        })
+    } catch (err) {
+        console.error(err)
+        res.send(false)
+    }
+})
+
+app.post("/api/register", (req, res) => {
+    console.log("Attempted registration", req.body.username, req.body.password);
+    const username = req.body.username
+
+    try {
+        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (user) => {
+            if (!user) {
+                console.log("Username", username, "available")
+                bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+                    if (err) throw err;
+                    const newUser = { username: username, password: hash }
+                    database.collection("users").insertOne(newUser, function(err, result) {
+                        if (err) throw err;
+                        console.log("New user", newUser);
+                        res.send(true)
+                    })
+                })
+            } else {
+                console.log("Username", username, "not available")
+                res.send(false)
+            }
+        })
+    } catch (err) {
+        console.error(err)
+        res.send(false)
+    }
+    
 })

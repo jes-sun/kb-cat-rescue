@@ -73,7 +73,9 @@ function Homepage() {
                     <h2>
                         Cat of the Day
                     </h2>
-                    {catOfTheDay}
+                    <div>
+                        {catOfTheDay}
+                    </div>
                 </Col>
             </Row>
         </Container>

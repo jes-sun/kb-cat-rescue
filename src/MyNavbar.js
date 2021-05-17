@@ -15,6 +15,9 @@ function MyNavbar() {
                     <Nav.Link className="mx-2" href="/cats">
                         Adopt
                     </Nav.Link>
+                    <Nav.Link className="mx-2" href="/account">
+                        My Account
+                    </Nav.Link>
                 </Nav>
                 <Nav>
                     <Nav.Link className="mx-2" href="https://www.linkedin.com/in/jessun99/">

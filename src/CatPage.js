@@ -51,45 +51,47 @@ function CatPage(props) {
                 </Row>
                 
             </Modal.Header>
-            <Row>
-                <Col xs={12} lg={6} className="d-flex align-items-center">
-                    <img src={cat.image} alt={cat.name} width="100%" style={{borderRadius:"5px"}}/>
-                </Col>
-                <Col>
-                    <Row>
-                        <Col className="text-center mb-2">
-                            <em>{cat.info.temperament}</em>
-                        </Col>
-                    </Row>
-                    <Row>                        
-                        <Col>
-                            <p>{cat.info.description}</p>
-                            <p>Adopt {cat.name} today!</p>
-                        </Col>
-                    </Row>
-                </Col>
-            </Row>
-            <Row>
-                <Col xs={12} md={6}>
-                    <TraitBar name="Social Needs" trait={cat.info.social_needs}/>
-                    <TraitBar name="Affection Level" trait={cat.info.affection_level}/>
-                    <TraitBar name="Child Friendly" trait={cat.info.child_friendly}/>
-                    <TraitBar name="Dog Friendly" trait={cat.info.dog_friendly}/>
-                    <TraitBar name="Stranger Friendly" trait={cat.info.stranger_friendly}/>
-                    
-                </Col>
-                <Col>
-                    <TraitBar name="Intelligence" trait={cat.info.intelligence}/>
-                    <TraitBar name="Energy Level" trait={cat.info.energy_level}/>
-                    <TraitBar name="Vocalization" trait={cat.info.vocalisation}/>
-                    <TraitBar name="Shedding Level" trait={cat.info.shedding_level}/>
-                    <TraitBar name="Grooming" trait={cat.info.grooming}/>
-                </Col>
-            </Row>
+            <Modal.Body>
+                <Row>
+                    <Col xs={12} lg={6} className="d-flex align-items-center">
+                        <img src={cat.image} alt={cat.name} width="100%" style={{borderRadius:"5px"}}/>
+                    </Col>
+                    <Col>
+                        <Row>
+                            <Col className="text-center mb-2">
+                                <em>{cat.info.temperament}</em>
+                            </Col>
+                        </Row>
+                        <Row>                        
+                            <Col>
+                                <p>{cat.info.description}</p>
+                                <p>Adopt {cat.name} today!</p>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} md={6}>
+                        <TraitBar name="Social Needs" trait={cat.info.social_needs}/>
+                        <TraitBar name="Affection Level" trait={cat.info.affection_level}/>
+                        <TraitBar name="Child Friendly" trait={cat.info.child_friendly}/>
+                        <TraitBar name="Dog Friendly" trait={cat.info.dog_friendly}/>
+                        <TraitBar name="Stranger Friendly" trait={cat.info.stranger_friendly}/>
+                        
+                    </Col>
+                    <Col>
+                        <TraitBar name="Intelligence" trait={cat.info.intelligence}/>
+                        <TraitBar name="Energy Level" trait={cat.info.energy_level}/>
+                        <TraitBar name="Vocalization" trait={cat.info.vocalisation}/>
+                        <TraitBar name="Shedding Level" trait={cat.info.shedding_level}/>
+                        <TraitBar name="Grooming" trait={cat.info.grooming}/>
+                    </Col>
+                </Row>
+            </Modal.Body>
             <Modal.Footer>
                 <Button className="mx-1" variant="success" onClick={adopt}>
-                        Adopt {cat.name} 
-                    </Button> 
+                    Adopt {cat.name} 
+                </Button> 
             </Modal.Footer>
         </Container>
     )

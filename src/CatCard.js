@@ -40,13 +40,8 @@ function CatCard(props) {
             </Card.Header>
             <Card.Body className="text-center">
                 <Container className="h-100 d-flex flex-column">
-                    <Row>
-                        <Col>
-                            
-                        </Col>
-                    </Row>
                     <Row className="my-auto">
-                        <Col >                                            
+                        <Col className="my-1" >                                            
                             {props.cat.sex} {props.cat.info.name}<br/>
                             {ageMessage}  
                         </Col>
