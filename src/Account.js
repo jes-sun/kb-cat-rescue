@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import CatCard from "./CatCard";
 
 function Account() {
-    const [user, setUser] = useState(localStorage.getItem("currentLogin"));
+    const [user] = useState(localStorage.getItem("currentLogin"));
     const [myCats, setMyCats] = useState([]);
     let history = useHistory();
     React.useEffect(() => {
@@ -23,7 +23,6 @@ function Account() {
             .then(response => response.json())
             .then(data => {
                 setMyCats(data)
-                console.log(data)
             })
         }
     }, [user, history])
@@ -41,7 +40,7 @@ function Account() {
     }
 
     function logOut() {
-        localStorage.clear("currentLogin")
+        localStorage.removeItem("currentLogin")
         history.push("/")
     }
     

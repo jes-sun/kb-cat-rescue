@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Modal from "react-bootstrap/Modal";
 import Container from "react-bootstrap/Container";
@@ -7,25 +8,50 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function Register() {
+function Register(props) {
+    const [validated, setValidated] = useState(false);
 
+    let history = useHistory();
     const registerSubmit = (event) => {
+        console.log("props",props)
         event.preventDefault();
         const form = event.currentTarget
-        const username = form.registerUsername.value
-        const password = form.registerPassword.value
-        const user  = { username: username, password: password }
 
-        console.log("attempt registration", user)
-        fetch("http://localhost:8080/api/register",
-            {method:"POST", headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },body:JSON.stringify(user)})
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
+        if(form.checkValidity() === false) {
+            event.stopPropagation()
+        } else {
+            const username = form.registerUsername.value
+            const password = form.registerPassword.value
+            const user  = { username: username, password: password }
+
+            console.log("attempt registration", user)
+            fetch("http://localhost:8080/api/register",
+                {method:"POST", headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },body:JSON.stringify(user)})
+            .then(response => response.json())
+            .then(data => {
+                if(data){
+                    setValidated(true)
+                    localStorage.setItem("currentLogin", username)
+                    if(props.adoption) {
+                        history.push("/adopt")
+                    } else {
+                        history.push("/myaccount")
+                    }
+                } else {
+                    setValidated(false)
+                    const fields = [document.getElementById("registerUsername")]
+                    fields.forEach(field => {
+                        field.classList.add("field-rejected")
+                        setTimeout(() => {
+                            field.classList.remove("field-rejected")
+                        }, 3000)
+                    })
+                }
+            })
+        }
     }
     
     return(
@@ -39,7 +65,7 @@ function Register() {
                     </Col>
                 </Row>
             </Modal.Header>
-            <Form onSubmit={registerSubmit}>
+            <Form onSubmit={registerSubmit} validated={validated}>
                 <Modal.Body>
                     <Row>
                         <Col>
@@ -56,13 +82,13 @@ function Register() {
                                 <Form.Label>
                                     Username
                                 </Form.Label>
-                                <Form.Control type="text" placeholder="Enter username" autoComplete="on"/>
+                                <Form.Control required type="text" placeholder="Enter username" autoComplete="on"/>
                             </Form.Group>
                             <Form.Group controlId="registerPassword">
                                 <Form.Label>
                                     Password
                                 </Form.Label>
-                                <Form.Control type="password" placeholder="Enter password" autoComplete="on"/>
+                                <Form.Control required type="password" placeholder="Enter password" autoComplete="on"/>
                             </Form.Group>
                         </Col>
                     </Row>

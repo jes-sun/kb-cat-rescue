@@ -42,8 +42,11 @@ function Homepage() {
                     </p>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                            <Button variant="primary" href="/cats">
-                                See cats
+                            <Button className="mx-2" variant="primary" href="/account">
+                                Login/Register
+                            </Button>
+                            <Button className="mx-2" variant="success" href="/cats">
+                                See Cats
                             </Button>
                         </Col>
                     </Row>

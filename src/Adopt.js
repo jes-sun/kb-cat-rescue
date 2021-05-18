@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Login from "./Login.js";
 
 function Adopt(props) {
     let history = useHistory()
@@ -21,6 +20,12 @@ function Adopt(props) {
             history.push("/")
         }
     }, [history, props.location.state])
+
+    React.useEffect(() => {
+        if(!isLoggedIn()) {
+            history.push("/login", {adoption: "true"})
+        }
+    }, [history])
     
     function isLoggedIn() {
         return localStorage.getItem("currentLogin")
@@ -36,38 +41,13 @@ function Adopt(props) {
         .then(response => response.json())
         .then(data => {
             if (data) {
-                localStorage.clear("adoptionProcess")
-                sessionStorage.clear("catOfTheDay")
+                localStorage.removeItem("adoptionProcess")
+                sessionStorage.removeItem("catOfTheDay")
                 history.push("/account")
             }
         })
     }
 
-    function AdoptionScreen() {
-        if (!isLoggedIn()) {
-            return (
-                <Col>
-                    <Login adoption="true"/>
-                </Col>
-            )
-        } else {
-            return (
-                <>
-                <Col xs={12}>
-                    <img src={cat.image} alt={cat.name} width="100%"/>
-                </Col>
-                <Col className="text-center">
-                    <h6 className="my-2">
-                        Currently logged in as {isLoggedIn()}
-                    </h6>
-                    <Button variant="success" className="my-2" onClick={adoption}>
-                        Adopt!
-                    </Button>
-                </Col>
-                </>
-            )
-        }
-    }
     return(
         <Container>
             <Row>
@@ -79,7 +59,17 @@ function Adopt(props) {
                 </Col>        
             </Row>
             <Row>
-                <AdoptionScreen/>
+                <Col xs={12}>
+                    <img src={cat.image} alt={cat.name} width="100%"/>
+                </Col>
+                <Col className="text-center">
+                    <h6 className="my-2">
+                        Currently logged in as {isLoggedIn()}
+                    </h6>
+                    <Button variant="success" className="my-2" onClick={adoption}>
+                        Adopt!
+                    </Button>
+                </Col>
             </Row>
         </Container>
     )
