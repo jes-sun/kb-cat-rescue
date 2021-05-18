@@ -18,9 +18,9 @@ const url = process.env.DB_URL;
 const client = new MongoClient(url);
 let database;
 
-// const buildPath = path.join(__dirname, '../build');
-// app.use(express.static(buildPath));
-// console.log("Express serving", buildPath);
+const buildPath = path.join(__dirname, '../build');
+app.use(express.static(buildPath));
+console.log("Express serving", buildPath);
 
 const server = app.listen(port, host, function () {
     const port = server.address().port
@@ -243,3 +243,7 @@ app.post("/api/mycats", (req, res) => {
         res.send(false)
     }
 })
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});

@@ -25,7 +25,7 @@ function Register(props) {
             const user  = { username: username, password: password }
 
             console.log("attempt registration", user)
-            fetch("http://localhost:8080/api/register",
+            fetch("/api/register",
                 {method:"POST", headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
