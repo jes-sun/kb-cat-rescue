@@ -42,7 +42,7 @@ function Login(props) {
                 if (props.adoption) {
                    window.location.reload();
                 } else {
-                    history.push("/account")
+                    history.push("/myaccount")
                 }
             }
         })

@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 import CatCard from "./CatCard";
 
 function Account() {
     const [user, setUser] = useState(localStorage.getItem("currentLogin"));
     const [myCats, setMyCats] = useState([]);
-    let history = useHistory;
+    let history = useHistory();
     React.useEffect(() => {
         if (!user) {
             history.push("/login")
@@ -29,9 +30,6 @@ function Account() {
         
     function MyCats() {
         let myCatCards = []
-
-        console.log(myCats)
-
         myCats.forEach((entry) => {
             myCatCards.push(
                 <Col xs={12} sm={12} md={6} lg={4} className="my-3" key={entry.cat.name+entry.cat.info.breed}>
@@ -39,8 +37,12 @@ function Account() {
                 </Col>
             )
         })
-
         return myCatCards
+    }
+
+    function logOut() {
+        localStorage.clear("currentLogin")
+        history.push("/")
     }
     
 
@@ -52,6 +54,13 @@ function Account() {
                         {user}'s Cats
                     </h1>
                     <hr/>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="text-center">
+                    <Button variant="outline-primary" size="sm" onClick={logOut}>
+                        Log out
+                    </Button>
                 </Col>
             </Row>
             <Row>

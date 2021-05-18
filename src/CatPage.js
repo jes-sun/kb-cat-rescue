@@ -48,7 +48,19 @@ function CatPage(props) {
             return(<></>)
         }   
     }
-
+    
+    function Description() {
+        if (props.adoptable === "true") {
+            return(
+                <>
+                <p>{cat.info.description}</p>
+                <p>Adopt {cat.name} today!</p>
+                </>
+            )
+        } else {
+            return(<p>{cat.info.description}</p>)
+        } 
+    }
     return( 
         <Container>
             <Modal.Header className="mb-1" closeButton>
@@ -76,8 +88,7 @@ function CatPage(props) {
                         </Row>
                         <Row>                        
                             <Col>
-                                <p>{cat.info.description}</p>
-                                <p>Adopt {cat.name} today!</p>
+                                <Description/>
                             </Col>
                         </Row>
                     </Col>
