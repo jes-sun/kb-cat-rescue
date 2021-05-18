@@ -33,7 +33,7 @@ function Adopt(props) {
 
     function adoption() {
         const adoptRequest = { username: isLoggedIn(), cat: cat }
-        fetch("http://localhost:8080/api/adopt",
+        fetch("/api/adopt",
         {method:"POST", headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

@@ -15,7 +15,7 @@ function Account() {
         if (!user) {
             history.push("/login")
         } else {
-            fetch("http://localhost:8080/api/mycats",
+            fetch("/api/mycats",
             {method:"POST", headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

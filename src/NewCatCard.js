@@ -59,7 +59,7 @@ function NewCatCard(props) {
     );
 
     React.useEffect(() => {
-        fetch("http://localhost:8080/api/generatecat")
+        fetch("/api/generatecat")
         .then(res => res.json())
         .then((generatedCat) => {
             if(props.catOfTheDay) {
