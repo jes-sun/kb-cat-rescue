@@ -15,7 +15,7 @@ import logo from "./images/logo-2.png";
 
 function Homepage() {
     const cachedCat =  sessionStorage.getItem("catOfTheDay")
-    const catOfTheDay = cachedCat ? <CatCard cat={JSON.parse(cachedCat)}/> : <NewCatCard catOfTheDay="true"/>
+    const catOfTheDay = cachedCat ? <CatCard cat={JSON.parse(cachedCat)} adoptable="true"/> : <NewCatCard catOfTheDay="true"/>
 
 
     return(

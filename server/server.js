@@ -152,7 +152,7 @@ app.get("/api/generatecat", (req, res) => {
 })
 
 app.post("/api/login", (req, res) => {
-    console.log("Attempted login",req.body.username, req.body.password);
+    console.log("Attempted login",req.body.username);
     const username = req.body.username
     try {
         database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (err, user) => {
@@ -176,7 +176,8 @@ app.post("/api/login", (req, res) => {
 
 app.post("/api/checkUsername", (req, res) => {
     try {
-        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (user) => {
+        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (err, user) => {
+            if (err) throw err;
             user ? res.send(true) : res.send(false)
         })
     } catch (err) {
@@ -186,11 +187,12 @@ app.post("/api/checkUsername", (req, res) => {
 })
 
 app.post("/api/register", (req, res) => {
-    console.log("Attempted registration", req.body.username, req.body.password);
+    console.log("Attempted registration", req.body.username);
     const username = req.body.username
 
     try {
-        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (user) => {
+        database.collection("users").findOne({"username":{$regex: "^"+username+"$"}}, (err, user) => {
+            if (err) throw err;
             if (!user) {
                 console.log("Username", username, "available")
                 bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
@@ -211,5 +213,33 @@ app.post("/api/register", (req, res) => {
         console.error(err)
         res.send(false)
     }
-    
+})
+
+app.post("/api/adopt", (req, res) => {
+    const username = req.body.username
+    const cat = req.body.cat
+    const adoption = { username: username, cat: cat }
+    try {
+        database.collection("usersCats").insertOne(adoption, (err, result) => {
+            if (err) throw err;
+            console.log(cat.name, "adopted by", username)
+            res.send(true)
+        })
+    } catch (err) {
+        console.error(err)
+        res.send(false)
+    }
+})
+
+app.post("/api/mycats", (req, res) => {
+    const username = req.body.username
+    try {
+        database.collection("usersCats").find({"username":username}).project({"cat":1}).toArray((err, cats) => {
+            if (err) throw err;
+            res.send(cats)
+        })
+    } catch (err) {
+        console.error(err)
+        res.send(false)
+    }
 })

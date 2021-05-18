@@ -15,7 +15,7 @@ function CatPage(props) {
     const ageMessage = age !== 1 ? age + " years old" : age + " year old"
 
     const conditionBadge = cat.condition !== "none" ? (<Badge variant="secondary">{cat.condition}</Badge>) : (<></>)
-    
+
     let history = useHistory()
     function adopt() {
         history.push("/adopt", {cat:cat})
@@ -35,6 +35,18 @@ function CatPage(props) {
                 />
             </div>
         )
+    }
+
+    function AdoptButton() {
+        if (props.adoptable === "true") {
+            return(
+                <Button className="mx-1" variant="success" onClick={adopt}>
+                    Adopt {cat.name} 
+                </Button> 
+            )
+        } else {
+            return(<></>)
+        }   
     }
 
     return( 
@@ -89,9 +101,7 @@ function CatPage(props) {
                 </Row>
             </Modal.Body>
             <Modal.Footer>
-                <Button className="mx-1" variant="success" onClick={adopt}>
-                    Adopt {cat.name} 
-                </Button> 
+                <AdoptButton/>
             </Modal.Footer>
         </Container>
     )

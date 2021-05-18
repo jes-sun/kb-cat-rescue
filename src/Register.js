@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 function Register() {
 
     const registerSubmit = (event) => {
+        event.preventDefault();
         const form = event.currentTarget
         const username = form.registerUsername.value
         const password = form.registerPassword.value

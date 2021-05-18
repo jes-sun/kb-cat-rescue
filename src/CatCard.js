@@ -59,7 +59,7 @@ function CatCard(props) {
             onHide={handleClose}
             size="lg"
         >
-            <CatPage cat={props.cat}/>
+            <CatPage cat={props.cat} adoptable={props.adoptable}/>
         </Modal>
         </>
             

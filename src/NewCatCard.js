@@ -70,7 +70,7 @@ function NewCatCard(props) {
     }, [props.catOfTheDay])
 
     return(
-        <CatCard cat={cat}/>
+        <CatCard cat={cat} adoptable="true"/>
     )
 }
 
