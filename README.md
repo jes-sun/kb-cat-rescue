@@ -14,6 +14,7 @@ Here are my learning goals for this project.
 - Learn about React Hooks
 - Get a better understanding of `react-bootstrap`
 - Get a better understanding of `async`/`await`
+- Use `react-loading-skeleton`
 
 ## Sources
 Cat names list from:
