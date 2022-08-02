@@ -1,11 +1,6 @@
 # The Kilobyte Cat Rescue
 Welcome to the Kilobyte Cat Rescue! This is a unique shelter — all of the cats are randomly generated! Despite their digital existence, these cats are still adorable and looking for new homes... perhaps you might have a place for one? Take a look, you might just meet a new fictional friend!
 
-## Live Link
-[The Kilobyte Cat Rescue can be found on Heroku.](https://kb-cat-rescue.herokuapp.com/)
-
-Please note that the website will take a short moment to load once opened.
-
 ## Preview
 
 ![Homepage](images/homepage.png)
